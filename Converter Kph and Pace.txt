@@ -1,0 +1,35 @@
+Converter
+-- kph to pace and reverse
+
+def kphtopace(n):
+	p = 60/n
+	return f"your pace = {int(p)}.{int(p%1 * 60)} min/km"
+
+def pacetokph(h):
+	k = str(h).split('.')
+	if int(k[1]) >= 60 and int(k[1]) < 100:
+		return print("wrong input parameter, check your decimal input")
+	elif int(k[1]) >= 100:
+		k[1] = int(int(k[1])/(10**(len(k[1])-2)))
+		if k[1] >= 60 and k[1] < 100:
+			return print("wrong input parameter, check your decimal input")
+		else:
+			s = int(k[0]) + float(k[1])/60
+			p = round(60/s, 2)
+			return f"your speed is {p} kph"
+	elif int(k[1]) < 0:
+		return print("wrong input parameter, check your decimal input")
+	elif int(k[1]) >=0 and int(k[1]) < 60:
+		s = int(k[0]) + float(k[1])/60
+		p = round(60/s, 2)
+		return f"your speed is {p} kph"
+	else:
+		return print("wrong input parameter, check your decimal input")
+
+n = float(input().strip())
+h = input('').strip()
+kphtopace(n)
+pacetokph(h)
+
+--pacetokph for leading 0 is not yet developped
+
